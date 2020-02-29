@@ -6,9 +6,11 @@ export const comments = (state = {
     comments: []
 }, action) => {
     switch(action.type) {
-        // case ActionTypes.ADD_COMMENT:
-        //     var comment = action.payload;
-        //     return {...state, comments: state.comments.concat(comment)};
+        case ActionTypes.ADD_COMMENT:
+            var comment = action.payload;
+            var commentId = state.comments.length;
+            comment = {...comment, id: commentId};
+            return {...state, comments: state.comments.concat(comment)};
         
         case ActionTypes.ADD_COMMENTS:
             return {...state, isLoading: false, errMess: null, comments: action.payload};
