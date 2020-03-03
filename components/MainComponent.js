@@ -30,6 +30,7 @@ const MenuNavigator = createStackNavigator({
                 headerLeft: <Icon name='menu' size={24}
                     color='white'
                     onPress={() => navigation.toggleDrawer()}
+                    iconStyle={{marginLeft: 10}}
                 />
             }) },
     Dishdetail: { screen: Dishdetail }
@@ -79,6 +80,7 @@ const ContactNavigator = createStackNavigator({
         headerLeft: <Icon name='menu' size={24}
             color='white'
             onPress={() => navigation.toggleDrawer()}
+            iconStyle={{marginLeft: 10}}
             />
     })
 });
@@ -97,6 +99,7 @@ const AboutNavigator = createStackNavigator({
         headerLeft: <Icon name='menu' size={24}
             color='white'
             onPress={() => navigation.toggleDrawer()}
+            iconStyle={{marginLeft: 10}}
             />
     })
 });
@@ -115,6 +118,7 @@ const ReservationNavigator = createStackNavigator({
         headerLeft: <Icon name='menu' size={24}
             color='white'
             onPress={() => navigation.toggleDrawer()}
+            iconStyle={{marginLeft: 10}}
             />
     })
 });
@@ -133,6 +137,7 @@ const FavoritesNavigator = createStackNavigator({
         headerLeft: <Icon name='menu' size={24}
             color='white'
             onPress={() => navigation.toggleDrawer()}
+            iconStyle={{marginLeft: 10}}
             />
     })
 });
