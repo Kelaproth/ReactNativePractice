@@ -49,7 +49,7 @@ const MenuNavigator = createStackNavigator({
 });
 
 const HomeNavigator = createStackNavigator({
-    Home: { screen: Home },
+    Home: { screen: Home }
 },{
     navigationOptions: ({navigation}) => ({ 
         headerStyle: {
@@ -68,7 +68,7 @@ const HomeNavigator = createStackNavigator({
 });
 
 const ContactNavigator = createStackNavigator({
-    Contact: { screen: Contact },
+    Contact: { screen: Contact }
 },{
     navigationOptions: ({navigation}) => ({
         headerStyle: {
@@ -87,7 +87,7 @@ const ContactNavigator = createStackNavigator({
 });
 
 const AboutNavigator = createStackNavigator({
-    About: { screen: About },
+    About: { screen: About }
 },{
     navigationOptions: ({navigation}) => ({
         headerStyle: {
@@ -106,7 +106,7 @@ const AboutNavigator = createStackNavigator({
 });
 
 const ReservationNavigator = createStackNavigator({
-    Reservation: { screen: Reservation },
+    Reservation: { screen: Reservation }
 },{
     navigationOptions: ({navigation}) => ({
         headerStyle: {
@@ -125,7 +125,7 @@ const ReservationNavigator = createStackNavigator({
 });
 
 const FavoritesNavigator = createStackNavigator({
-    Favorites: { screen: Favorites },
+    Favorites: { screen: Favorites }
 },{
     navigationOptions: ({navigation}) => ({
         headerStyle: {
@@ -144,7 +144,7 @@ const FavoritesNavigator = createStackNavigator({
 });
 
 const LoginNavigator = createStackNavigator({
-    Login: { screen: Login },
+    Login: Login
 },{
     navigationOptions: ({navigation}) => ({
         headerStyle: {
