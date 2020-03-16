@@ -5,6 +5,7 @@ import DatePicker from 'react-native-datepicker';
 import * as Animatable from 'react-native-animatable';
 import * as Permissions from 'expo-permissions';
 import { Notifications } from 'expo';
+import * as Calendar from 'expo-calendar'
 
 Notifications.createChannelAndroidAsync('Confusion', {
     name: 'Confusion',
@@ -26,6 +27,44 @@ class Reservation extends Component {
     static navigationOptions = {
         title: 'Reserve Table'
     };
+
+    handleReservation() {
+        this.addReservationToCalendar(this.state.date);
+        this.resetForm();
+    }
+
+    async obtainCalendarPermission() {
+        let permission = await Permissions.getAsync(Permissions.CALENDAR);
+        if(permission.status !== 'granted'){
+            permission = await Permissions.askAsync(Permissions.CALENDAR);
+            if (permission.status !== 'granted') {
+                Alert.alert('Permission not granted to save to calendar');
+            }
+        }
+        return permission;
+    }
+
+    async addReservationToCalendar(date) {
+        await this.obtainCalendarPermission();
+
+        let date_start = new Date(Date.parse(date));
+        let date_end = new Date(Date.parse(date) + 2*60*60*1000);
+        let default_calendar = await Calendar.getCalendarsAsync()
+            .then(calendars => {return calendars.filter((calender) => calender.allowsModifications === true)[0].id})
+            .catch(error => {Alert.alert('Error','Can\'t get default calendar, '+error.message)});
+
+        Calendar.createEventAsync(
+            default_calendar,
+            {
+            title: 'Con Fusion Table Reservation',
+            startDate: date_start,
+            endDate: date_end,
+            timeZone: 'Asia/Hong_Kong',
+            location: '121, Clear Water Bat Road, Clear Water Bay, Kowloon, Hong Kong'
+        })
+        //.catch(error => {Alert.alert('Can\'t add calendar, '+ error.message)});
+    }
+
 
     resetForm() {
         this.setState({
@@ -131,7 +170,7 @@ class Reservation extends Component {
                                         {text: 'Cancel', onPress: () => this.resetForm(), style: 'cancel'},
                                         {text: 'OK', onPress: () => {
                                             this.presentLocalNotification(this.state.date);
-                                            this.resetForm();
+                                            this.handleReservation();
                                             }
                                         }
                                     ],
